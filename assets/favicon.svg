@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Fondo estilo pantalla oscura -->
+  <rect width="32" height="32" fill="#0d0e15" rx="6" />
+  
+  <!-- Borde brillante estilo neon cian -->
+  <rect x="2" y="2" width="28" height="28" fill="none" stroke="#00ffcc" stroke-width="2" rx="4" />
+  
+  <!-- Letras RV pixeladas / futuristas -->
+  <text x="16" y="22" font-family="&#39;Courier New&#39;, monospace" font-size="15" font-weight="bold" fill="#ff007f" text-anchor="middle" letter-spacing="1">RV</text>
+</svg>
