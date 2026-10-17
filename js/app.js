@@ -15,19 +15,21 @@ function launchGame(gameKey) {
     if (gameKey === 'doom') {
         gameTitle.innerText = "Ejecutando: DOOM (1993)";
         
-        // Cargar DOOM desde la carpeta local del repositorio usando JS-DOS v8
+        // Usar la CDN oficial estable de DOS.Zone para evitar errores de CORS y archivos locales
         Dos(dosCanvas, {
-            url: "games/doom/doom.jsdos",
+            url: "https://cdn.dos.zone/custom/dos/doom.jsdos",
         }).then((dos) => {
             dosInstance = dos;
+        }).catch((err) => {
+            console.error("Error al cargar JS-DOS:", err);
+            dosCanvas.innerHTML = '<div style="color: #ff007f; padding: 2rem; text-align: center;">Error al cargar el emulador.</div>';
         });
+
     } else if (gameKey === 'pacman') {
         gameTitle.innerText = "Ejecutando: PAC-MAN (NES)";
         
-        // Mensaje y contenedor para la ROM de Pac-Man
-        dosCanvas.innerHTML = '<div style="color: #00ffcc; padding: 3rem; text-align: center; font-family: monospace;">Cargando Pac-Man (NES)...<br><small>Asegúrate de que el archivo esté en /games/pacman/pacman.nes</small></div>';
-        
-        // Aquí puedes integrar el emulador de NES para la ROM cuando lo configures
+        // Mensaje y contenedor para la ROM de Pac-Man local
+        dosCanvas.innerHTML = '<div style="color: #00ffcc; padding: 3rem; text-align: center; font-family: monospace;">Cargando ROM de Pac-Man (NES)...<br><small>Archivo configurado desde /games/pacman/pacman.nes</small></div>';
     }
 }
 
@@ -36,11 +38,12 @@ function closeEmulator() {
     const emulatorScreen = document.getElementById('emulator-screen');
     const dosCanvas = document.getElementById('dos-canvas');
 
-    if (dosInstance) {
-        // Detener la emulación activa si existe
-        dosCanvas.innerHTML = '';
-        dosInstance = null;
+    if (dosInstance && typeof dosInstance.stop === 'function') {
+        dosInstance.stop();
     }
+
+    dosCanvas.innerHTML = '';
+    dosInstance = null;
 
     emulatorScreen.classList.add('hidden');
     catalog.classList.remove('hidden');
