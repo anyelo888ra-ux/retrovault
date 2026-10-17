@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAC-MAN - RetroVault</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="crt">
+    <header class="header">
+        <h1 class="logo">PAC-<span>MAN</span></h1>
+        <p class="subtitle">RETRO ARCADE / NES</p>
+    </header>
+
+    <main class="container emulator-container">
+        <div class="emulator-controls">
+            <button class="btn-back" onclick="location.href='index.html'">⬅️ Volver al catálogo</button>
+            <span id="game-title">Ejecutando ROM local</span>
+        </div>
+        <div id="dos-canvas" class="dos-box" style="display: flex; align-items: center; justify-content: center;">
+            <div style="color: #00ffcc; padding: 2rem; text-align: center; font-family: monospace;">
+                Cargando Pac-Man (NES)...<br>
+                <small style="color: #888;">Leyendo archivo desde /games/pacman/pacman.nes</small>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 c00lcompany | RetroVault</p>
+    </footer>
+</body>
+</html>
