@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOOM (1993) - RetroVault</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="style.css">
+    <!-- JS-DOS CDN v8 -->
+    <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
+    <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
+</head>
+<body class="crt">
+    <header class="header">
+        <h1 class="logo">DOOM <span>(1993)</span></h1>
+        <p class="subtitle">MS-DOS EMULATOR</p>
+    </header>
+
+    <main class="container emulator-container">
+        <div class="emulator-controls">
+            <button class="btn-back" onclick="location.href='index.html'">⬅️ Volver al catálogo</button>
+            <span id="game-title">Ejecutando MS-DOS Engine</span>
+        </div>
+        <div id="dos-canvas" class="dos-box"></div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 c00lcompany | RetroVault</p>
+    </footer>
+
+    <script>
+        // Inicialización directa de JS-DOS v8 con la CDN estable
+        window.addEventListener("load", () => {
+            const dosCanvas = document.getElementById('dos-canvas');
+            Dos(dosCanvas, {
+                url: "https://cdn.dos.zone/custom/dos/doom.jsdos",
+            }).catch((err) => {
+                console.error("Error al cargar JS-DOS:", err);
+                dosCanvas.innerHTML = '<div style="color: #ff007f; padding: 2rem; text-align: center;">Error al cargar el emulador de DOS.</div>';
+            });
+        });
+    </script>
+</body>
+</html>
