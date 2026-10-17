@@ -13,13 +13,13 @@
 <body class="crt">
     <header class="header">
         <h1 class="logo">DOOM <span>(1993)</span></h1>
-        <p class="subtitle">MS-DOS EMULATOR</p>
+        <p class="subtitle">MS-DOS EMULATOR ENGINE</p>
     </header>
 
     <main class="container emulator-container">
         <div class="emulator-controls">
             <button class="btn-back" onclick="location.href='index.html'">⬅️ Volver al catálogo</button>
-            <span id="game-title">Ejecutando MS-DOS Engine</span>
+            <span id="game-title">Ejecutando doom.exe (MS-DOS)</span>
         </div>
         <div id="dos-canvas" class="dos-box"></div>
     </main>
@@ -29,14 +29,24 @@
     </footer>
 
     <script>
-        // Inicialización directa de JS-DOS v8 con la CDN estable
+        // Inicialización robusta asegurando que el DOM y las dimensiones estén listas
         window.addEventListener("load", () => {
             const dosCanvas = document.getElementById('dos-canvas');
+            
+            // Verificamos que la librería Dos esté cargada globalmente
+            if (typeof Dos === 'undefined') {
+                dosCanvas.innerHTML = '<div style="color: #ff007f; padding: 2rem; text-align: center;">Error: La librería JS-DOS no pudo cargarse desde la CDN.</div>';
+                return;
+            }
+
             Dos(dosCanvas, {
                 url: "https://cdn.dos.zone/custom/dos/doom.jsdos",
+                autoStart: true,
+            }).then((ci) => {
+                console.log("Emulador MS-DOS iniciado correctamente con el ejecutable de Doom.");
             }).catch((err) => {
-                console.error("Error al cargar JS-DOS:", err);
-                dosCanvas.innerHTML = '<div style="color: #ff007f; padding: 2rem; text-align: center;">Error al cargar el emulador de DOS.</div>';
+                console.error("Error al arrancar JS-DOS:", err);
+                dosCanvas.innerHTML = '<div style="color: #ff007f; padding: 2rem; text-align: center;">Fallo al montar la imagen de MS-DOS.</div>';
             });
         });
     </script>
