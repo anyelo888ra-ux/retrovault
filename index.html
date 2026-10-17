@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroVault Arcade | c00lcompany</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- JS-DOS CDN para emulación de MS-DOS -->
+    <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
+    <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
+</head>
+<body class="crt">
+    <header class="header">
+        <h1 class="logo">🕹️ RETRO<span>VAULT</span></h1>
+        <p class="subtitle">BY c00lcompany</p>
+    </header>
+
+    <main class="container">
+        <!-- Catálogo de Juegos -->
+        <section id="catalog" class="catalog-grid">
+            <div class="card" onclick="launchGame('doom')">
+                <div class="card-icon">👿</div>
+                <h3>DOOM (MS-DOS)</h3>
+                <p>El clásico shooter en primera persona de 1993.</p>
+                <button class="btn">JUGAR</button>
+            </div>
+
+            <div class="card" onclick="launchGame('pacman')">
+                <div class="card-icon">🟡</div>
+                <h3>PAC-MAN</h3>
+                <p>El rey de los arcades ochenteros.</p>
+                <button class="btn">JUGAR</button>
+            </div>
+        </section>
+
+        <!-- Contenedor del Emulador -->
+        <section id="emulator-screen" class="emulator-container hidden">
+            <div class="emulator-controls">
+                <button class="btn-back" onclick="closeEmulator()">⬅️ Volver al catálogo</button>
+                <span id="game-title">Cargando juego...</span>
+            </div>
+            <div id="dos-canvas" class="dos-box"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 c00lcompany | c00lkidd_v2yt. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
