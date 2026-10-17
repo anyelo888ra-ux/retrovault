@@ -9,19 +9,25 @@ function launchGame(gameKey) {
     catalog.classList.add('hidden');
     emulatorScreen.classList.remove('hidden');
 
+    // Limpiar pantalla anterior
+    dosCanvas.innerHTML = '';
+
     if (gameKey === 'doom') {
         gameTitle.innerText = "Ejecutando: DOOM (1993)";
         
-        // Inicializar JS-DOS v8 para cargar la demo oficial de DOOM
-        dosCanvas.innerHTML = '';
+        // Cargar DOOM desde la carpeta local del repositorio usando JS-DOS v8
         Dos(dosCanvas, {
-            url: "https://cdn.dos.zone/custom/dos/doom.jsdos",
+            url: "games/doom/doom.jsdos",
         }).then((dos) => {
             dosInstance = dos;
         });
     } else if (gameKey === 'pacman') {
-        gameTitle.innerText = "Ejecutando: PAC-MAN";
-        dosCanvas.innerHTML = '<div style="color:white; padding:2rem; text-align:center;">Cargando juego de Pac-Man...</div>';
+        gameTitle.innerText = "Ejecutando: PAC-MAN (NES)";
+        
+        // Mensaje y contenedor para la ROM de Pac-Man
+        dosCanvas.innerHTML = '<div style="color: #00ffcc; padding: 3rem; text-align: center; font-family: monospace;">Cargando Pac-Man (NES)...<br><small>Asegúrate de que el archivo esté en /games/pacman/pacman.nes</small></div>';
+        
+        // Aquí puedes integrar el emulador de NES para la ROM cuando lo configures
     }
 }
 
