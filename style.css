@@ -1,0 +1,153 @@
+:root {
+    --bg-color: #0d0e15;
+    --card-bg: #161925;
+    --accent-color: #00ffcc;
+    --text-color: #f0f0f0;
+    --neon-pink: #ff007f;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Efecto Pantalla CRT */
+.crt::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 4px;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.header {
+    text-align: center;
+    padding: 2rem;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-color);
+    margin: 0;
+}
+
+.logo span {
+    color: var(--neon-pink);
+    text-shadow: 0 0 10px var(--neon-pink);
+}
+
+.subtitle {
+    color: #888;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+}
+
+.container {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 2px solid #2a2e45;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s, border-color 0.2s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.btn {
+    background: var(--accent-color);
+    color: #000;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    background: #00cca3;
+}
+
+/* Emulador y Pantalla */
+.hidden {
+    display: none !important;
+}
+
+.emulator-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.emulator-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 640px;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.btn-back {
+    background: var(--neon-pink);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-family: inherit;
+    border-radius: 4px;
+}
+
+.dos-box {
+    width: 640px;
+    height: 400px;
+    max-width: 100%;
+    background: #000;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+}
+
+.footer {
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid #2a2e45;
+    font-size: 0.8rem;
+    color: #666;
+}
