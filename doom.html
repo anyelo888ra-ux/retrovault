@@ -19,7 +19,7 @@
     <main class="container emulator-container">
         <div class="emulator-controls">
             <button class="btn-back" onclick="location.href='index.html'">⬅️ Volver al catálogo</button>
-            <span id="game-title">Ejecutando doom.exe (MS-DOS)</span>
+            <span id="game-title">Ejecutando DOOM.EXE</span>
         </div>
         <div id="dos-canvas" class="dos-box"></div>
     </main>
@@ -29,13 +29,12 @@
     </footer>
 
     <script>
-        // Inicialización robusta asegurando que el DOM y las dimensiones estén listas
+        // Inicialización idéntica al flujo de MS-DOS ejecutando el bundle y su .exe
         window.addEventListener("load", () => {
             const dosCanvas = document.getElementById('dos-canvas');
             
-            // Verificamos que la librería Dos esté cargada globalmente
             if (typeof Dos === 'undefined') {
-                dosCanvas.innerHTML = '<div style="color: #ff007f; padding: 2rem; text-align: center;">Error: La librería JS-DOS no pudo cargarse desde la CDN.</div>';
+                dosCanvas.innerHTML = '<div style="color: #ff007f; padding: 2rem; text-align: center;">Error: Librería JS-DOS no disponible.</div>';
                 return;
             }
 
@@ -43,10 +42,10 @@
                 url: "https://cdn.dos.zone/custom/dos/doom.jsdos",
                 autoStart: true,
             }).then((ci) => {
-                console.log("Emulador MS-DOS iniciado correctamente con el ejecutable de Doom.");
+                console.log("¡Motor MS-DOS y DOOM.EXE montados con éxito!");
             }).catch((err) => {
-                console.error("Error al arrancar JS-DOS:", err);
-                dosCanvas.innerHTML = '<div style="color: #ff007f; padding: 2rem; text-align: center;">Fallo al montar la imagen de MS-DOS.</div>';
+                console.error("Error al iniciar el emulador:", err);
+                dosCanvas.innerHTML = '<div style="color: #ff007f; padding: 2rem; text-align: center;">Error al cargar la imagen de MS-DOS.</div>';
             });
         });
     </script>
